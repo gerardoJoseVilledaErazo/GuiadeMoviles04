@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Material_Design</string>
+    <string name="name">Nombre</string>
+    <string name="lastname">Apellido</string>
+    <string name="registryEmployee">Registrar Empleado</string>
+    <string name="addEmployee">Agregar Empleado</string>
+    <string name="listView">Mostrar Lista</string>
+    <string name="MyData">Ver Datos</string>
+
+
+    <string name="DevBy">Desarrollado por:</string>
+    <string name="Name">Nombre:</string>
+    <string name="MyName">Gerardo José Villeda Erazo</string>
+    <string name="Code">Código:</string>
+    <string name="MyCode">VE16I04001@usonsonate.edu.sv</string>
+
+
+
+    <string name="Required">Este campo es requerido.</string>
+</resources>
