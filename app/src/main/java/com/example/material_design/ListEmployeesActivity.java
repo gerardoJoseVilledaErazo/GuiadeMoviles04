@@ -27,6 +27,7 @@ public class ListEmployeesActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     String name, lastname;
     TextView tvNumber;//TextView cantidad de encuestados
+    FloatingActionButton btnNuevo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class ListEmployeesActivity extends AppCompatActivity {
         }
 
         tvNumber = (TextView) findViewById(R.id.tvNumber);
+
+        btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
 
         name = getIntent().getExtras().getString("NAME");
         lastname = getIntent().getExtras().getString("LASTNAME");
@@ -62,12 +65,10 @@ public class ListEmployeesActivity extends AppCompatActivity {
         int n = lstEmployees.size();
         tvNumber.setText("Cantidad de encuestados: " + n);
 
-        //abrir vista nueva tarea
-        Intent intent =new Intent(this,AddEmployeeActivity.class);
-
-        FloatingActionButton btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
-
         btnNuevo.setOnClickListener(view -> {
+
+            //abrir agregar empleado
+            Intent intent =new Intent(this,AddEmployeeActivity.class);
             intent.putExtra("estado",0);
             startActivity(intent);
         });
