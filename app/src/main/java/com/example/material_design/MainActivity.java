@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnLstEmployees.setOnClickListener( v -> {
+            //startActivity(new Intent(MainActivity.this, ListEmployeesActivity.class));
+
             if(!lstEmployees.isEmpty()){
                 startActivity(new Intent(MainActivity.this, ListEmployeesActivity.class));
             }else{

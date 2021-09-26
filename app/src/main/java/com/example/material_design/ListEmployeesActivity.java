@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.material_design.adapters.EmployeesAdapter;
 import com.example.material_design.models.EmployeeModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,12 +58,19 @@ public class ListEmployeesActivity extends AppCompatActivity {
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
 */
         setRecyclerView(lstEmployees);
-        //Intent intent = new Intent(ListEmployeesActivity.this, MainActivity.class);
-        //startActivity(intent);
-
         //TextView cantidad de encuestados
         int n = lstEmployees.size();
         tvNumber.setText("Cantidad de encuestados: " + n);
+
+        //abrir vista nueva tarea
+        Intent intent =new Intent(this,AddEmployeeActivity.class);
+
+        FloatingActionButton btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
+
+        btnNuevo.setOnClickListener(view -> {
+            intent.putExtra("estado",0);
+            startActivity(intent);
+        });
     }
 
     private void setRecyclerView(List<EmployeeModel> lstEmployees) {
@@ -72,6 +80,7 @@ public class ListEmployeesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         employeesAdapter = new EmployeesAdapter(lstEmployees);
         recyclerView.setAdapter(employeesAdapter);
+        employeesAdapter.notifyDataSetChanged();
     }
 
     public void Menu(View view){

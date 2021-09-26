@@ -45,8 +45,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     return;
                 }
                 else{
-                    //
                     Intent intent = new Intent(this, ListEmployeesActivity.class);
+                    //Intent intent = new Intent(this, MainActivity.class);
                     String name = edtName.getText().toString();
                     String lastname = edtLastName.getText().toString();
 
