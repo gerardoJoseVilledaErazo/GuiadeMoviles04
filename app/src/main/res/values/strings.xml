@@ -17,4 +17,8 @@
 
 
     <string name="Required">Este campo es requerido.</string>
+    <string name="msgCancel" translatable="false">Limpiar</string>
+    <string name="msgMenu" translatable="false">Menu</string>
+    <string name="conditions" translatable="false">Acepto los terminos y condiciones.</string>
+    <string name="Number" translatable="false">Cantidad de encuestados: 0</string>
 </resources>

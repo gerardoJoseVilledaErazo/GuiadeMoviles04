@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.material_design.adapters.EmployeesAdapter;
@@ -23,6 +25,7 @@ public class ListEmployeesActivity extends AppCompatActivity {
     public static List<EmployeeModel> lstEmployees;
     LinearLayoutManager linearLayoutManager;
     String name, lastname;
+    TextView tvNumber;//TextView cantidad de encuestados
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class ListEmployeesActivity extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        tvNumber = (TextView) findViewById(R.id.tvNumber);
 
         name = getIntent().getExtras().getString("NAME");
         lastname = getIntent().getExtras().getString("LASTNAME");
@@ -52,8 +57,12 @@ public class ListEmployeesActivity extends AppCompatActivity {
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
 */
         setRecyclerView(lstEmployees);
-        Intent intent = new Intent(ListEmployeesActivity.this, MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(ListEmployeesActivity.this, MainActivity.class);
+        //startActivity(intent);
+
+        //TextView cantidad de encuestados
+        int n = lstEmployees.size();
+        tvNumber.setText("Cantidad de encuestados: " + n);
     }
 
     private void setRecyclerView(List<EmployeeModel> lstEmployees) {
@@ -63,6 +72,11 @@ public class ListEmployeesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         employeesAdapter = new EmployeesAdapter(lstEmployees);
         recyclerView.setAdapter(employeesAdapter);
+    }
+
+    public void Menu(View view){
+        Intent intent = new Intent(ListEmployeesActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
