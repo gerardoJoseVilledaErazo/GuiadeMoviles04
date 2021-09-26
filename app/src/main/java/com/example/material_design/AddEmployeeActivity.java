@@ -58,7 +58,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     //Inicia Activity
                     startActivity(intent);
 
-                    Toast.makeText(AddEmployeeActivity.this, "Agregado",
+                    Toast.makeText(AddEmployeeActivity.this,
+                            "Registro añadido: " + name +" "+ lastname,
                             Toast.LENGTH_SHORT).show();
                 }
             }

@@ -49,10 +49,6 @@ public class ListEmployeesActivity extends AppCompatActivity {
         }
 
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, name, lastname));
-
-        Toast.makeText(ListEmployeesActivity.this,
-                "Registro añadido: " + name +" "+ lastname,
-                Toast.LENGTH_SHORT).show();
         /*
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
