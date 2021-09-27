@@ -28,6 +28,8 @@ public class ListEmployeesActivity extends AppCompatActivity {
     String name, lastname;
     TextView tvNumber;//TextView cantidad de encuestados
     FloatingActionButton btnNuevo;
+    boolean x = true;
+    int n;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +38,46 @@ public class ListEmployeesActivity extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        tvNumber = (TextView) findViewById(R.id.tvNumber);
-        btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
-        name = getIntent().getExtras().getString("NAME");
-        lastname = getIntent().getExtras().getString("LASTNAME");
-
         if(lstEmployees == null){
             lstEmployees = new ArrayList<EmployeeModel>();
+            tvNumber = (TextView) findViewById(R.id.tvNumber);
+            btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
+            name = getIntent().getExtras().getString("NAME");
+            lastname = getIntent().getExtras().getString("LASTNAME");
+            lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, name, lastname));
+            setRecyclerView(lstEmployees);
+
+            //TextView para contar la cantidad de encuestados
+            n = lstEmployees.size();
+            tvNumber.setText("Cantidad de encuestados: " + n);
+            x = false;
         }
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, name, lastname));
-        setRecyclerView(lstEmployees);
+        try {
+            name = getIntent().getExtras().getString("NAME");
+        }catch(Exception exception){
+            x = false;
+        }
+        if(!lstEmployees.isEmpty() && x == true){
+            tvNumber = (TextView) findViewById(R.id.tvNumber);
+            btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
+            name = getIntent().getExtras().getString("NAME");
+            lastname = getIntent().getExtras().getString("LASTNAME");
+            lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, name, lastname));
+            setRecyclerView(lstEmployees);
 
-        //TextView para contar la cantidad de encuestados
-        int n = lstEmployees.size();
-        tvNumber.setText("Cantidad de encuestados: " + n);
+            //TextView para contar la cantidad de encuestados
+            n = lstEmployees.size();
+            tvNumber.setText("Cantidad de encuestados: " + n);
+        }else {
+            tvNumber = (TextView) findViewById(R.id.tvNumber);
+            setRecyclerView(lstEmployees);
+            //tvNumber.setText("");
 
-        btnNuevo.setOnClickListener(view -> {
-            //abrir agregar empleado
-            Intent intent =new Intent(this,AddEmployeeActivity.class);
-            intent.putExtra("estado",0);
-            startActivity(intent);
-        });
+            //TextView para contar la cantidad de encuestados
+            n = lstEmployees.size();
+            tvNumber.setText("Cantidad de encuestados: " + n);
+
+        }
     }
 
     private void setRecyclerView(List<EmployeeModel> lstEmployees) {
@@ -68,6 +88,13 @@ public class ListEmployeesActivity extends AppCompatActivity {
         employeesAdapter = new EmployeesAdapter(lstEmployees);
         recyclerView.setAdapter(employeesAdapter);
         employeesAdapter.notifyDataSetChanged();
+    }
+
+    public void agregarnuevo(View view){
+        //abrir agregar empleado
+        Intent intent =new Intent(this,AddEmployeeActivity.class);
+        intent.putExtra("estado",0);
+        startActivity(intent);
     }
 
     public void Menu(View view){
