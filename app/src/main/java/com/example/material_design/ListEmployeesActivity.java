@@ -38,31 +38,21 @@ public class ListEmployeesActivity extends AppCompatActivity {
         }
 
         tvNumber = (TextView) findViewById(R.id.tvNumber);
-
         btnNuevo=(FloatingActionButton)findViewById(R.id.btnNuevo);
-
         name = getIntent().getExtras().getString("NAME");
         lastname = getIntent().getExtras().getString("LASTNAME");
 
         if(lstEmployees == null){
             lstEmployees = new ArrayList<EmployeeModel>();
         }
-
         lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, name, lastname));
-        /*
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
-        lstEmployees.add(new EmployeeModel(R.drawable.android_kotlin, "Juan", "Pedro"));
-*/
         setRecyclerView(lstEmployees);
-        //TextView cantidad de encuestados
+
+        //TextView para contar la cantidad de encuestados
         int n = lstEmployees.size();
         tvNumber.setText("Cantidad de encuestados: " + n);
 
         btnNuevo.setOnClickListener(view -> {
-
             //abrir agregar empleado
             Intent intent =new Intent(this,AddEmployeeActivity.class);
             intent.putExtra("estado",0);
